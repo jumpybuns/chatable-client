@@ -1,0 +1,60 @@
+.outerContainer {
+  display: flex;  
+  justify-content: center;  
+  align-items: center;  
+  height: 100vh;  
+  background-color: #1A1A1D;
+}
+
+.header {
+  color: white;  
+  font-size: 2.5em;  
+  padding-bottom: 10px;  
+  border-bottom: 2px solid white;
+}
+
+.innerContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  height: 40vh;
+  width: 100vw;
+}
+
+.nameInput {
+  border: none;  
+  border-radius: 8px;  
+  padding: 10px;  
+  font-size: 1.2em;
+  outline: none;
+  margin: 10px;
+}
+
+.roomInput {
+  border: none;  
+  border-radius: 8px;  
+  padding: 10px;   
+  font-size: 1.2em;
+  outline: none;
+  margin: 10px;
+}
+
+.submitButton {
+  color: #fff !important;    
+  text-transform: uppercase;    
+  text-decoration: none;    
+  background: #2979FF;    
+  padding: 15px;    
+  border-radius: 5px;    
+  display: inline-block;    
+  border: none;    
+  width: 80%;
+  cursor: pointer;
+  outline: none;
+  margin: 10px;
+}
+
+.submitButton:active {
+  opacity: 0.5;
+}
