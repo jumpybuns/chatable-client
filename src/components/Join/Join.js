@@ -1,15 +1,21 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import styles from './Join.css';
 
-export default function Join() {
+export default function Join({ socket }) {
   const [name, setName] = useState('');
   const [room, setRoom] = useState('');
+
+  if(socket) { 
+    socket.on('AUTH_RESULTS', (data) => console.log('data', data));    
+  }
+
+  const history = useHistory();
 
   const handleNameChange = ({ target }) => {
     setName(target.value);
   };
-  
+
   const handleRoomChange = ({ target }) => {
     setRoom(target.value);
   };
@@ -18,30 +24,32 @@ export default function Join() {
     if(!name || !room) {
       e.preventDefault();
     } else {
+      history.push(`/chat?name=${name}&room=${room}`);
       return null;
     }
   };
 
   return (
-    <div className={styles.outerContainer}>
-      <div className={styles.innerContainer}>
-        <h1 className={styles.header}>Join a room</h1>
-        <input 
-          className={styles.nameInput}
-          placeholder="Name" 
-          onChange={handleNameChange}/>
-        <input 
-          className={styles.roomInput}
-          placeholder="Room" 
-          onChange={handleRoomChange}/>
-        <Link 
-          to={`/chat?name=${name}&room=${room}`}
-          onClick={handleLinkClick}>
-          <button 
-            className={styles.submitButton}
-            type="submit">Sign In</button>
-        </Link>
-      </div>
-    </div>
+    <form className={styles.container}>
+      <h1 className={styles.heading}>Join a room</h1>
+      <input
+        className={styles['form-input']}
+        placeholder="Name"
+        onChange={handleNameChange}
+      />
+      <input
+        className={styles['form-input']}
+        placeholder="Room"
+        onChange={handleRoomChange}
+      />
+      <button
+        className={styles.submitButton}
+        onClick={handleLinkClick}
+        type="submit"
+      >
+        Sign In
+      </button>
+      {/* </Link> */}
+    </form>
   );
 }
