@@ -4,12 +4,8 @@ import Join from './components/Join/Join';
 import { io } from 'socket.io-client';
 import Chat from './components/Chat/Chat';
 import Signup from './components/Signup/Signup';
+import Login from './components/Login/Login';
 import styles from './App.css';
-
-const SocketContext = React.createContext();
-
-// typeof(Join(socket)) === 'function';
-// typeof <Join /> === 'object';
 
 const App = () => {
   const [socket, setSocket] = useState(null);
@@ -21,28 +17,30 @@ const App = () => {
 
   return (
     <div className={styles.root}>
-      <SocketContext.Provider value={socket}>
-        <Router>
-          <Route
-            path="/join"
-            exact
-            component={() => <Join socket={socket} />}
-          /> 
-          <Route
-            path="/chat"
-            exact
-            component={() => <Chat socket={socket} />}
-          />
-          <Route
-            path="/signup"
-            exact
-            component={() => <Signup socket={socket} />}
-          />
-        </Router>
-      </SocketContext.Provider>
+      <Router>
+        <Route
+          path="/join"
+          exact
+          component={() => <Join socket={socket} />}
+        /> 
+        <Route
+          path="/chat"
+          exact
+          component={() => <Chat socket={socket} />}
+        />
+        <Route
+          path="/signup"
+          exact
+          component={() => <Signup socket={socket} />}
+        />
+        <Route
+          path="/login"
+          exact
+          component={() => <Login socket={socket} />}
+        />
+      </Router>
     </div>
   );
 };
-
 
 export default App;

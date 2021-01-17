@@ -4,19 +4,14 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { signupSchema } from './Signup.schema';
 import styles from './Signup.css';
+import PropTypes from 'prop-types';
 
-export default function Signup({ socket }) {
-  console.log('socket', socket);
+function Signup({ socket }) {
 
-  const { register, handleSubmit, watch, errors } = useForm({
+  const { register, handleSubmit, errors } = useForm({
     resolver: yupResolver(signupSchema),
     mode: 'onBlur',
-    reValidateMode: 'onBlur',
-    defaultValues: {
-      email: 'david@david.com',
-      password: 'bananagram1',
-      name: 'david',
-    },
+    reValidateMode: 'onBlur'
   });
 
   const showNameError = Boolean(errors.name);
@@ -27,8 +22,7 @@ export default function Signup({ socket }) {
 
   const history = useHistory();
 
-  const handleSignup = (formValues) => {
-    console.log(formValues);
+  const handleSignup = formValues => {
     socket.emit('SIGN_UP', formValues);
     history.push('/join');
   };
@@ -37,7 +31,7 @@ export default function Signup({ socket }) {
     <form className={styles.container} onSubmit={handleSubmit(handleSignup)}>
       <h1 className={styles.heading}>Sign Up</h1>
       <input
-        className={styles['form-input']}
+        className={styles.formInput}
         name="name"
         ref={register}
         placeholder="User Name"
@@ -46,7 +40,7 @@ export default function Signup({ socket }) {
         {showErrorOrEmptyString(showNameError, errors.name?.message)}
       </p>
       <input
-        className={styles['form-input']}
+        className={styles.formInput}
         name="email"
         ref={register}
         placeholder="Email"
@@ -55,7 +49,7 @@ export default function Signup({ socket }) {
         {showErrorOrEmptyString(showEmailError, errors.email?.message)}
       </p>
       <input
-        className={styles['form-input']}
+        className={styles.formInput}
         name="password"
         ref={register}
         type="password"
@@ -70,3 +64,11 @@ export default function Signup({ socket }) {
     </form>
   );
 }
+
+Signup.propTypes = {
+  socket: PropTypes.shape({
+    emit: PropTypes.func.isRequired
+  })
+};
+
+export default Signup;

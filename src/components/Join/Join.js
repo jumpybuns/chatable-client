@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import styles from './Join.css';
+import PropTypes from 'prop-types';
 
-export default function Join({ socket }) {
+function Join({ socket }) {
   const [name, setName] = useState('');
   const [room, setRoom] = useState('');
 
   if(socket) { 
-    socket.on('AUTH_RESULTS', (data) => console.log('data', data));    
+    socket.on('LOGIN_RESULTS', (data) => console.log('data', data));
   }
 
   const history = useHistory();
@@ -25,7 +26,6 @@ export default function Join({ socket }) {
       e.preventDefault();
     } else {
       history.push(`/chat?name=${name}&room=${room}`);
-      return null;
     }
   };
 
@@ -53,3 +53,11 @@ export default function Join({ socket }) {
     </form>
   );
 }
+
+Join.propTypes = {
+  socket: PropTypes.shape({
+    on: PropTypes.func.isRequired
+  })
+};
+
+export default Join;
