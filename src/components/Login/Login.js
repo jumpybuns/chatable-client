@@ -17,7 +17,7 @@ function Login({ socket }) {
 
   const handleLogin = (formValues) => {
     socket.emit('LOGIN', formValues);
-    history.push('/join');
+    history.push('/room');
   };
 
   const showEmailError = Boolean(errors.email);

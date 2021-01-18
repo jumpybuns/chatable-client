@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -24,7 +24,7 @@ function Signup({ socket }) {
 
   const handleSignup = formValues => {
     socket.emit('SIGN_UP', formValues);
-    history.push('/join');
+    history.push('/room');
   };
 
   return (
