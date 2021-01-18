@@ -17,7 +17,6 @@ const App = () => {
     const s = io(process.env.SERVER_URL);
     setSocket(s);
     s.on('AUTH_RESULTS', (authResults) => {
-      console.log(authResults, 'AUTH');
       setUser(authResults.user);
     });
     return () => s.close();

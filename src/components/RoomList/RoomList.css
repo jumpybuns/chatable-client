@@ -1,0 +1,9 @@
+.roomsList {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  height: 500px;
+  width: 500px;
+  overflow: scroll;
+  overflow-x: hidden;
+}

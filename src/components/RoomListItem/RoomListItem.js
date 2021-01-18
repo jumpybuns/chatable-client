@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import styles from './RoomListItem';
+import styles from './RoomListItem.css';
 
 const RoomListItem = ({ room }) => {
   return (

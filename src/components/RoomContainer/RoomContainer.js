@@ -1,23 +1,42 @@
 import React, { useEffect, useState } from 'react';
 import RoomForm from '../Roomform/RoomForm';
 import RoomList from '../RoomList/RoomList';
+import styles from './RoomContainer.css';
 
 export default function RoomContainer({ user, socket }) {
   const [rooms, setRooms] = useState([]);
 
+  const roomData = [
+    { name: 'super loooooong name', id: '1' },
+    { name: 'room two', id: '2' },
+    { name: 'room three', id: '3' },
+    { name: 'super loooooong name', id: '4' },
+    { name: 'room five', id: '5' },
+    { name: 'room six', id: '6' },
+    { name: 'super seven', id: '7' },
+    { name: 'room eight', id: '8' },
+    { name: 'room nine', id: '9' },
+  ];
+
   useEffect(() => {
-    socket.emit('GET_ROOMS', user?.id);
-    socket.on('ROOMS_RESULTS', (data) => {
-      setRooms(data.rooms);
-    });
+    if(socket) {
+      socket.emit('GET_ROOMS', user?.id);
+      socket.on('ROOMS_RESULTS', (data) => {
+        setRooms(data.rooms);
+      });
+    }
   }, []);
 
   console.log('ROOMS CONT', rooms);
 
   return (
-    <>
-      <RoomList rooms={rooms}/>
-      <RoomForm user={user} socket={socket}/>
-    </>
+    <section className={styles.container}>
+      <div className={styles.roomListContainer}>
+        <RoomList rooms={roomData} />
+      </div>
+      <div className={styles.roomFormContainer}>
+        <RoomForm user={user} socket={socket} />
+      </div>
+    </section>
   );
 }
