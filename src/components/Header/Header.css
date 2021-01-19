@@ -21,6 +21,8 @@
   display: flex;
   align-items: center;
   margin-right: 30px;
+  color: white;
+
 }
 
 .logoutButton {
@@ -28,11 +30,12 @@
   text-transform: uppercase;
   text-decoration: none;
   background: #2979ff;
-  padding: 15px;
+  padding: 10px;
   border-radius: 5px;
   display: inline-block;
   border: none;
   cursor: pointer;
   outline: none;
   margin: 5px;
+  margin-left: 2vw;
 }

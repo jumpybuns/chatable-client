@@ -1,33 +1,32 @@
 .container {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-start;
-  width: 370px;
-  padding: 16px;
-  margin-top: 100px;
+  align-items: center;
+  justify-content: center;
+  width: 30vw;
+  height: 70vh;
+  position: relative;
+  top: 10vh;
 }
 
 .formInput {
   border: none;
   border-radius: 8px;
-  padding-top: 10px;
-  padding-left: 10px;
-  padding-bottom: 10px;
-  font-size: 1.2em;
+  padding-top: 5px;
+  padding-left: 5px;
+  padding-bottom: 5px;
   outline: none;
-  margin: 5px;
-  width: 338px;
+  width: 30vw;
+  border-width: 0;
+  margin: 0;
 }
 
 .heading {
   color: white;
-  font-size: 2.5em;
-  padding-bottom: 10px;
-  margin-left: 10px;
-  margin-right: 10px;
-  border-bottom: 2px solid white;
-  width: 350px;
+  font-size: 2.0em;
+  border-bottom: 2px solid grey;
+  width: 30vw;
+  padding-bottom: 5px;
 }
 
 .submitButton {
@@ -36,13 +35,12 @@
   text-decoration: none;
   background: #2979ff;
   padding: 15px;
-  width: 350px;
+  width: 30vw;
   border-radius: 5px;
   display: inline-block;
   border: none;
   cursor: pointer;
   outline: none;
-  margin: 5px;
 }
 
 .submitButton:active {
@@ -53,8 +51,8 @@
   color: red;
   width: 100%;
   height: 20px;
-  margin-left: 15px;
-  margin-top: 0;
+  margin-left: 5px;
+  margin-top: 3px;
   margin-bottom: 0;
   font-size: 0.7em;
 }

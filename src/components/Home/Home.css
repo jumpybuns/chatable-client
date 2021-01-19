@@ -27,13 +27,13 @@
   text-decoration: none;
   background: #2979ff;
   padding: 15px;
-  width: 350px;
+  width: 100%;
   border-radius: 5px;
   display: inline-block;
   border: none;
   cursor: pointer;
   outline: none;
-  margin: 5px;
+  margin: 10px;
 }
 
 .button:active {
