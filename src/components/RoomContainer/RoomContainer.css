@@ -1,5 +1,6 @@
 .container {
   display: flex;
+  align-items: center;
 }
 
 .roomListContainer {
@@ -16,4 +17,5 @@
   align-items: center;
   height: 100vh;
   width: 50vw;
+  background-color: #1A1A1D;
 }

@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { io } from 'socket.io-client';
-import Join from './components/Join/Join';
 import RoomContainer from './components/RoomContainer/RoomContainer';
 import Home from './components/Home/Home';
 import Chat from './components/Chat/Chat';
 import Signup from './components/Signup/Signup';
 import Login from './components/Login/Login';
+import Header from './components/Header/Header';
 import styles from './App.css';
 
 const App = () => {
@@ -23,35 +23,34 @@ const App = () => {
   }, []);
 
   return (
-    <div className={styles.root}>
-      <Router>
-        <Route
-          path="/"
-          exact
-          component={Home}
-        /> 
-        <Route
-          path="/room"
-          exact
-          component={() => <RoomContainer user={user} socket={socket} />}
-        /> 
-        <Route
-          path="/chat"
-          exact
-          component={() => <Chat user={user} socket={socket} />}
-        />
-        <Route
-          path="/signup"
-          exact
-          component={() => <Signup socket={socket} />}
-        />
-        <Route
-          path="/login"
-          exact
-          component={() => <Login socket={socket} />}
-        />
-      </Router>
-    </div>
+    <>
+      <Header user={user} />
+      <div className={styles.root}>
+        <Router>
+          <Route path="/" exact component={Home} />
+          <Route
+            path="/room"
+            exact
+            component={() => <RoomContainer user={user} socket={socket} />}
+          />
+          <Route
+            path="/chat"
+            exact
+            component={() => <Chat user={user} socket={socket} />}
+          />
+          <Route
+            path="/signup"
+            exact
+            component={() => <Signup socket={socket} />}
+          />
+          <Route
+            path="/login"
+            exact
+            component={() => <Login socket={socket} />}
+          />
+        </Router>
+      </div>
+    </>
   );
 };
 

@@ -56,8 +56,8 @@ function Login({ socket }) {
 
 Login.propTypes = {
   socket: PropTypes.shape({
-    emit: PropTypes.func.isRequired
-  })
+    emit: PropTypes.func.isRequired,
+  }),
 };
 
 export default Login;
