@@ -2,8 +2,9 @@ import React, { useEffect, useState } from 'react';
 import RoomForm from '../Roomform/RoomForm';
 import RoomList from '../RoomList/RoomList';
 import styles from './RoomContainer.css';
+import Header from '../Header/Header';
 
-export default function RoomContainer({ user, socket }) {
+export default function RoomContainer({ user, socket, handleLogout }) {
   const [rooms, setRooms] = useState([]);
 
   const roomData = [
@@ -19,7 +20,7 @@ export default function RoomContainer({ user, socket }) {
   ];
 
   useEffect(() => {
-    if(socket) {
+    if (socket) {
       socket.emit('GET_ROOMS', user?.id);
       socket.on('ROOMS_RESULTS', (data) => {
         setRooms(data.rooms);
@@ -27,16 +28,17 @@ export default function RoomContainer({ user, socket }) {
     }
   }, []);
 
-  console.log('ROOMS CONT', rooms);
-
   return (
-    <section className={styles.container}>
-      <div className={styles.roomListContainer}>
-        <RoomList rooms={roomData} />
-      </div>
-      <div className={styles.roomFormContainer}>
-        <RoomForm user={user} socket={socket} />
-      </div>
-    </section>
+    <>
+      <Header user={user} handleLogout={handleLogout} />
+      <section className={styles.container}>
+        <div className={styles.roomListContainer}>
+          <RoomList rooms={roomData} />
+        </div>
+        <div className={styles.roomFormContainer}>
+          <RoomForm user={user} socket={socket} />
+        </div>
+      </section>
+    </>
   );
 }

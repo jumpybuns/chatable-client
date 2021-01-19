@@ -6,7 +6,6 @@ import Home from './components/Home/Home';
 import Chat from './components/Chat/Chat';
 import Signup from './components/Signup/Signup';
 import Login from './components/Login/Login';
-import Header from './components/Header/Header';
 import styles from './App.css';
 
 const App = () => {
@@ -22,16 +21,25 @@ const App = () => {
     return () => s.close();
   }, []);
 
+  const handleLogout = () => {
+    setUser({});
+  };
+
   return (
     <>
-      <Header user={user} />
       <div className={styles.root}>
         <Router>
-          <Route path="/" exact component={Home} />
+          <Route path="/" exact component={() => <Home user={user} />} />
           <Route
             path="/room"
             exact
-            component={() => <RoomContainer user={user} socket={socket} />}
+            component={() => (
+              <RoomContainer
+                handleLogout={handleLogout}
+                user={user}
+                socket={socket}
+              />
+            )}
           />
           <Route
             path="/chat"
@@ -41,12 +49,12 @@ const App = () => {
           <Route
             path="/signup"
             exact
-            component={() => <Signup socket={socket} />}
+            component={() => <Signup user={user} socket={socket} />}
           />
           <Route
             path="/login"
             exact
-            component={() => <Login socket={socket} />}
+            component={() => <Login user={user} socket={socket} />}
           />
         </Router>
       </div>
