@@ -1,0 +1,12 @@
+.roomsList {
+  list-style-type: none;
+  margin: 0;
+  margin-top: 10vh;
+  padding: 0;
+  height: 60vh;
+  width: 40vw;
+  overflow: scroll;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column-reverse;
+}
