@@ -25,7 +25,7 @@ function Signup({ socket, user }) {
 
   const handleSignup = formValues => {
     socket.emit('SIGN_UP', formValues);
-    history.push('/room');
+    history.push('/room'); 
   };
 
   return (
@@ -61,7 +61,7 @@ function Signup({ socket, user }) {
         <p className={styles.errorsMessage}>
           {showErrorOrEmptyString(showPasswordError, errors.password?.message)}
         </p>
-        <button className={styles.submitButton} type="submit">
+        <button className={styles.submitButton}  type="submit">
           Sign Up
         </button>
       </form>

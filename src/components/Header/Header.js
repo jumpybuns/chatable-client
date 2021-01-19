@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 function Header({ user, handleLogout }) {
   return (
     <div className={styles.container}>
-      <img className={styles.logo} src={image} alt='chatable logo' />
+      <img className={styles.logo} src={image} alt="chatable logo" />
       {user.email ? (
         <div className={styles.userProfile}>
           <p className={styles.userEmail}>{user.email}</p>

@@ -59,6 +59,7 @@ function Login({ socket, user }) {
 }
 
 Login.propTypes = {
+  user: PropTypes.shape({}),
   socket: PropTypes.shape({
     emit: PropTypes.func.isRequired,
   }),
