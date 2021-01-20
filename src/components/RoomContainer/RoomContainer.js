@@ -16,6 +16,7 @@ export default function RoomContainer(
         //array of rooms []
         setRooms(data.rooms);
       });
+      return () => socket.off('ROOMS_RESULTS');
     }
   }, []);
 
@@ -28,6 +29,7 @@ export default function RoomContainer(
             socket={socket}
             rooms={rooms}
           />
+        </div>
         <div className={styles.roomFormContainer}>
           <RoomForm user={user} socket={socket} />
         </div>

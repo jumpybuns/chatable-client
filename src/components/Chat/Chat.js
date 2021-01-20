@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import { useParams } from 'react-router';
 
-export default function Chat({ socket }) {
-
+export default function Chat({ socket, user }) {
+  console.log('inside chat function');
   const {
     id 
   } = useParams();
@@ -15,7 +15,7 @@ export default function Chat({ socket }) {
 
   return (
     <div>
-      Chat
+      SOME TEXT
     </div>
   );
 }

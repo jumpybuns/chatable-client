@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 import Header from '../Header/Header';
 
 function Login({ socket, user, setUser }) {
-  const [error, setError] = useState(null);
+  const [error, setError] = useState('');
   const [invalid, setInvalid] = useState(false);
   const { register, handleSubmit, errors } = useForm({
     resolver: yupResolver(loginSchema),
@@ -21,13 +21,13 @@ function Login({ socket, user, setUser }) {
   useEffect(() => {
     socket.on('AUTH_RESULTS', (authResults) => {
       if(!authResults.success) {
-        setError(authResults.err);
+        setError(authResults.message);
         setInvalid(true);
       } else {
         setUser(authResults.user);
-        console.log(authResults.user, 'THIS IS THE USER');
         history.push('/room');
       }
+      return () => socket.close();
     });
   }, []);
 
@@ -70,7 +70,7 @@ function Login({ socket, user, setUser }) {
         </button>
         <p className={styles.errorsMessage}> 
           { invalid
-            ? showInvalidMessage
+            ? error
             : '' }
         </p>
       </form>
@@ -79,7 +79,7 @@ function Login({ socket, user, setUser }) {
 }
 
 Login.propTypes = {
-  user: PropTypes.shape({}),
+  user: PropTypes.object,
   socket: PropTypes.shape({
     emit: PropTypes.func.isRequired,
   }),
