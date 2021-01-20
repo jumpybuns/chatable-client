@@ -15,9 +15,6 @@ const App = () => {
   useEffect(() => {
     const s = io(process.env.SERVER_URL);
     setSocket(s);
-    s.on('AUTH_RESULTS', (authResults) => {
-      setUser(authResults.user);
-    });
     return () => s.close();
   }, []);
 
@@ -42,19 +39,23 @@ const App = () => {
             )}
           />
           <Route
-            path="/chat"
+            path="room/:id"
             exact
             component={() => <Chat user={user} socket={socket} />}
           />
           <Route
             path="/signup"
             exact
-            component={() => <Signup user={user} socket={socket} />}
+            component={() => (
+              <Signup user={user} socket={socket} setUser={setUser} />
+            )}
           />
           <Route
             path="/login"
             exact
-            component={() => <Login user={user} socket={socket} />}
+            component={() => (
+              <Login user={user} socket={socket} setUser={setUser} />
+            )}
           />
         </Router>
       </div>

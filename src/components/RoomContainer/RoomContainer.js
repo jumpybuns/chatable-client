@@ -4,11 +4,13 @@ import RoomList from '../RoomList/RoomList';
 import styles from './RoomContainer.css';
 import Header from '../Header/Header';
 
-export default function RoomContainer({ user, socket, handleLogout }) {
+export default function RoomContainer(
+  { user, socket, handleLogout }
+) {
   const [rooms, setRooms] = useState([]);
 
   useEffect(() => {
-    if(socket) {
+    if (socket) {
       socket.emit('GET_ROOMS', user?.id);
       socket.on('ROOMS_RESULTS', (data) => {
         //array of rooms []
@@ -22,8 +24,10 @@ export default function RoomContainer({ user, socket, handleLogout }) {
       <Header user={user} handleLogout={handleLogout} />
       <section className={styles.container}>
         <div className={styles.roomListContainer}>
-          <RoomList rooms={rooms} />
-        </div>
+          <RoomList
+            socket={socket}
+            rooms={rooms}
+          />
         <div className={styles.roomFormContainer}>
           <RoomForm user={user} socket={socket} />
         </div>
