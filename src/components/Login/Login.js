@@ -27,6 +27,7 @@ function Login({ socket, user, setUser }) {
         setUser(authResults.user);
         history.push('/room');
       }
+      return () => socket.close();
     });
   }, []);
 
