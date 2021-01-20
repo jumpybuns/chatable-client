@@ -37,7 +37,6 @@ function Login({ socket, user, setUser }) {
 
   const showEmailError = Boolean(errors.email);
   const showPasswordError = Boolean(errors.password);
-  const showInvalidMessage = ('Invalid email/password');
   const showErrorOrEmptyString = (shouldShow, message) =>
     shouldShow ? message : '';
 

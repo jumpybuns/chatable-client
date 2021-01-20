@@ -40,7 +40,6 @@ const App = () => {
           />
           <Route
             path="room/:id"
-            // exact
             component={() => <Chat user={user} socket={socket} />}
           />
           <Route
