@@ -2,8 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import RoomListItem from '../RoomListItem/RoomListItem';
 import styles from './RoomList.css';
 
-const RoomList = ({ rooms }) => {
-
+const RoomList = ({ rooms, socket }) => {
   const roomsBeginningRef = useRef(null);
 
   const scrollToTop = () => {
@@ -17,9 +16,15 @@ const RoomList = ({ rooms }) => {
   return (
     <ul className={styles.roomsList}>
       {rooms
-        ? rooms.map((room) => <RoomListItem key={room.id} room={room} />)
-        : null} 
-      <div ref={roomsBeginningRef}/>
+        ? rooms.map((room) => (
+          <RoomListItem
+            socket={socket}
+            key={room.id}
+            room={room}
+          />
+        ))
+        : null}
+      <div ref={roomsBeginningRef} />
     </ul>
   );
 };
