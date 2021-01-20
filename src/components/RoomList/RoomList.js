@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import RoomListItem from '../RoomListItem/RoomListItem';
 import styles from './RoomList.css';
+import PropTypes from 'prop-types';
 
 const RoomList = ({ rooms, socket }) => {
   const roomsBeginningRef = useRef(null);
@@ -27,6 +28,13 @@ const RoomList = ({ rooms, socket }) => {
       <div ref={roomsBeginningRef} />
     </ul>
   );
+};
+
+RoomList.propTypes = {
+  rooms: PropTypes.array,
+  socket: PropTypes.shape({
+    emit: PropTypes.func
+  })
 };
 
 export default RoomList;

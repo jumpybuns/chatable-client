@@ -1,10 +1,12 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import styles from './Home.css';
-import image from '../../images/logo.png';
 import Header from '../Header/Header';
+import PropTypes from 'prop-types';
+// import image from '../../images/logo.png';
 
-export default function Home({ user }) {
+
+function Home({ user }) {
 
   const history = useHistory();
 
@@ -27,3 +29,9 @@ export default function Home({ user }) {
     </>
   );
 }
+
+Home.propTypes = {
+  user: PropTypes.object
+};
+
+export default Home;

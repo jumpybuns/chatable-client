@@ -3,8 +3,9 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { roomFormSchema } from './RoomForm.schema';
 import styles from './RoomForm.css';
+import PropTypes from 'prop-types';
 
-export default function RoomForm({ user, socket }) {
+function RoomForm({ user, socket }) {
   const userId = user?.id;
   
   const { register, handleSubmit, reset, getValues, errors } = useForm({
@@ -44,3 +45,12 @@ export default function RoomForm({ user, socket }) {
     </form>
   );
 }
+
+RoomForm.propTypes = {
+  user: PropTypes.object,
+  socket: PropTypes.shape({
+    emit: PropTypes.func.isRequired
+  })
+};
+
+export default RoomForm;

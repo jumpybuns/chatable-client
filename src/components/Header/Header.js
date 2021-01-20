@@ -2,6 +2,8 @@ import React from 'react';
 import styles from './Header.css';
 import image from '../../images/logo.png';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+
 
 function Header({ user, handleLogout }) {
   return (
@@ -23,5 +25,11 @@ function Header({ user, handleLogout }) {
     </div>
   );
 }
+
+Header.propTypes = {
+  user: PropTypes.object,
+  handleLogout: PropTypes.func.isRequired
+};
+
 
 export default Header;

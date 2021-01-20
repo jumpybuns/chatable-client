@@ -3,14 +3,16 @@ import RoomForm from '../Roomform/RoomForm';
 import RoomList from '../RoomList/RoomList';
 import styles from './RoomContainer.css';
 import Header from '../Header/Header';
+import PropTypes from 'prop-types';
 
-export default function RoomContainer(
+
+function RoomContainer(
   { user, socket, handleLogout }
 ) {
   const [rooms, setRooms] = useState([]);
 
   useEffect(() => {
-    if (socket) {
+    if(socket) {
       socket.emit('GET_ROOMS', user?.id);
       socket.on('ROOMS_RESULTS', (data) => {
         //array of rooms []
@@ -37,3 +39,15 @@ export default function RoomContainer(
     </>
   );
 }
+
+RoomContainer.propTypes = {
+  user: PropTypes.object,
+  socket: PropTypes.shape({
+    emit: PropTypes.func.isRequired,
+    on: PropTypes.func.isRequired,
+    off: PropTypes.func.isRequired
+  }),
+  handleLogout: PropTypes.func.isRequired
+};
+
+export default RoomContainer;

@@ -90,9 +90,13 @@ function Signup({ socket, user, setUser }) {
 }
 
 Signup.propTypes = {
+  user: PropTypes.object,
   socket: PropTypes.shape({
-    emit: PropTypes.func.isRequired
-  })
+    emit: PropTypes.func.isRequired,
+    on: PropTypes.func.isRequired,
+    off: PropTypes.func.isRequired
+  }),
+  setUser: PropTypes.func.isRequired
 };
 
 export default Signup;
