@@ -10,7 +10,7 @@ export default function RoomContainer(
   const [rooms, setRooms] = useState([]);
 
   useEffect(() => {
-    if(socket) {
+    if (socket) {
       socket.emit('GET_ROOMS', user?.id);
       socket.on('ROOMS_RESULTS', (data) => {
         //array of rooms []
