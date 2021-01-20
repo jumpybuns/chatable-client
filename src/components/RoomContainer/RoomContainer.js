@@ -29,6 +29,7 @@ export default function RoomContainer(
             socket={socket}
             rooms={rooms}
           />
+        </div>
         <div className={styles.roomFormContainer}>
           <RoomForm user={user} socket={socket} />
         </div>
