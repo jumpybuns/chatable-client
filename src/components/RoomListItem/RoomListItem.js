@@ -2,21 +2,26 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styles from './RoomListItem.css';
 import PropTypes from 'prop-types';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
+
 
 const RoomListItem = ({ room }) => {
+  const CustomLink = (props) => <Link to={`/room/?id=${room.id}`} {...props} />;
 
   return (
-    <Link
-      className={styles.link}
-      to={`/room/?id=${room.id}`}
+    <ListItem
+      primary={room?.name}
+      component={CustomLink}
+      button
     >
-      <li className={styles.container}>{room?.name}</li>
-    </Link>
+      <ListItemText primary={room?.name} />
+    </ListItem>
   );
 };
 
 RoomListItem.propTypes = {
-  room: PropTypes.object
+  room: PropTypes.object,
 };
 
 export default RoomListItem;
