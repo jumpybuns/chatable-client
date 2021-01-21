@@ -6,6 +6,8 @@
   color: #000;
   align-self: flex-start;
   margin: 3px;
+  box-shadow: 5px 10px 18px #888888;
+  margin-left: 20px;
 }
 .textSend {
   max-width: 60%;
@@ -15,6 +17,8 @@
   align-self: flex-end;
   margin: 3px;
   color: white;
+  box-shadow: 5px 10px 18px #888888;
+  margin-right: 20px;
 }
 
 .message {

@@ -1,6 +1,5 @@
 import React, { useEffect, useRef } from 'react';
 import RoomListItem from '../RoomListItem/RoomListItem';
-import styles from './RoomList.css';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -33,7 +32,7 @@ const RoomList = ({ rooms, socket }) => {
   }, [rooms]);
 
   return (
-    <List component='ul' className={classes.list}>
+    <List component="ul" className={classes.list}>
       {rooms
         ? rooms.map((room) => (
           <RoomListItem
