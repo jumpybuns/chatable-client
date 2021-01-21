@@ -12,14 +12,20 @@ export default function ChatMessage({ message, user, isLastMessage }) {
 
   const isUserMessage = message.userId === user.id;
   const sendOrRecieve = isUserMessage ? 'Send' : 'Recieve';
+  const isUserName = isUserMessage
+    ? styles.messageSentName
+    : styles.messageRecievedName;
 
   useEffect(() => {
     scrollToLastMessage();
   }, []);
 
   return (
-    <li className={styles[`text${sendOrRecieve}`]} ref={messageRef}>
-      <p className={styles.message}>{message.messageText}</p>
-    </li>
+    <>
+      <li className={styles[`text${sendOrRecieve}`]} ref={messageRef}>
+        <p className={styles.message}>{message.messageText}</p>
+      </li>
+      <p className={isUserName}>{user.name}</p>
+    </>
   );
 }
