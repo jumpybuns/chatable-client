@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import ChatList from '../ChatList/ChatList';
 import styles from './Chat.css';
+import ChatForm from '../ChatForm/ChatForm';
 
 export default function Chat({ socket, user }) {
   const [messages, setMessages] = useState([]);
@@ -14,12 +15,14 @@ export default function Chat({ socket, user }) {
 
   const id = useQuery();
 
-  useEffect(() => {
-    socket.emit('JOIN_ROOM', { id, user });
-  }, [id]);
-  
-  useEffect(() => {
+  useEffect(() => {    
     if(socket) {
+      socket.emit('JOIN_ROOM', { id, user });
+    }
+  }, [id]);
+
+  useEffect(() => {
+    if (socket) {
       socket.on('JOIN_RESULTS', (payload) => {
         setMessages(payload.messages);
       });
@@ -30,7 +33,7 @@ export default function Chat({ socket, user }) {
 
       socket.on('MESSAGE_RESULTS', (payload) => {
         console.log(payload);
-        setMessages(messages => [...messages, payload]);
+        setMessages((messages) => [...messages, payload]);
       });
 
       return () => {
@@ -42,15 +45,9 @@ export default function Chat({ socket, user }) {
   }, []);
 
   return (
-    <>
-      <section className={styles.container}>
-        <ChatList
-          roomId={id}
-          user={user}
-          messages={messages}
-          socket={socket}
-        />
-      </section>
-    </>
+    <section className={styles.container}>
+      <ChatList roomId={id} user={user} messages={messages} socket={socket} />
+      <ChatForm roomId={id} user={user} messages={messages} socket={socket} />
+    </section>
   );
 }

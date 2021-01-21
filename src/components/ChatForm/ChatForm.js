@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import styles from './ChatForm.css';
 
 export default function ChatForm({ user, socket, roomId }) {
-
   const [inputValue, setInput] = useState('');
 
   const handleInputChange = ({ target }) => {
@@ -20,11 +19,15 @@ export default function ChatForm({ user, socket, roomId }) {
       <input
         onChange={handleInputChange}
         className={styles.input}
-        type='text'
-        placeholder='Message'
+        type="text"
+        placeholder="Message"
         value={inputValue}
       />
-      <button onClick={handleSubmit} className={styles.button}>
+      <button
+        disabled={!roomId}
+        onClick={handleSubmit}
+        className={styles.button}
+      >
         Send
       </button>
     </form>
