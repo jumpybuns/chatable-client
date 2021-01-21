@@ -5,9 +5,8 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { loginSchema } from './Login.schema';
 import styles from './Login.css';
 import PropTypes from 'prop-types';
-import Header from '../Header/Header';
 
-function Login({ socket, user, setUser }) {
+function Login({ socket, setUser }) {
   const [error, setError] = useState('');
   const [invalid, setInvalid] = useState(false);
   const { register, handleSubmit, errors } = useForm({
@@ -42,7 +41,6 @@ function Login({ socket, user, setUser }) {
 
   return (
     <>
-      <Header user={user} />
       <form className={styles.container} onSubmit={handleSubmit(handleLogin)}>
         <h1 className={styles.heading}>Login</h1>
         <input

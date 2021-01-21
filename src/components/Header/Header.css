@@ -3,13 +3,14 @@
   justify-content: space-between;
   border-bottom: 2px solid white;
   background-color: #1a1a1d;
+  height: 80px;
+  box-sizing: border-box;
 }
 
 .logo {
-  height: 6%;
-  width: 6%;
-  margin-bottom: 10px;
-  margin-left: 30px;
+  height: 60px;
+  margin-bottom: 5px;
+  margin-left: 50px;
   margin-top: 10px;
 }
 
@@ -23,7 +24,6 @@
   align-items: center;
   margin-right: 30px;
   color: white;
-
 }
 
 .logoutButton {
