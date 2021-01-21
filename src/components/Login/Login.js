@@ -1,13 +1,14 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useHistory } from 'react-router-dom';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { loginSchema } from './Login.schema';
 import styles from './Login.css';
-import PropTypes from 'prop-types'; 
-import Header from '../Header/Header';
+import PropTypes from 'prop-types';
 
-function Login({ socket, user }) {
+function Login({ socket, setUser }) {
+  const [error, setError] = useState('');
+  const [invalid, setInvalid] = useState(false);
   const { register, handleSubmit, errors } = useForm({
     resolver: yupResolver(loginSchema),
     mode: 'onBlur',
@@ -16,9 +17,21 @@ function Login({ socket, user }) {
 
   const history = useHistory();
 
+  useEffect(() => {
+    socket.on('AUTH_RESULTS', (authResults) => {
+      if(!authResults.success) {
+        setError(authResults.message);
+        setInvalid(true);
+      } else {
+        setUser(authResults.user);
+        history.push('/room');
+      }
+      return () => socket.close();
+    });
+  }, []);
+
   const handleLogin = (formValues) => {
     socket.emit('LOGIN', formValues);
-    history.push('/room');p
   };
 
   const showEmailError = Boolean(errors.email);
@@ -28,7 +41,6 @@ function Login({ socket, user }) {
 
   return (
     <>
-      <Header user={user}/>
       <form className={styles.container} onSubmit={handleSubmit(handleLogin)}>
         <h1 className={styles.heading}>Login</h1>
         <input
@@ -53,16 +65,24 @@ function Login({ socket, user }) {
         <button className={styles.submitButton} type="submit">
           Login
         </button>
+        <p className={styles.errorsMessage}> 
+          { invalid
+            ? error
+            : '' }
+        </p>
       </form>
     </>
   );
 }
 
 Login.propTypes = {
-  user: PropTypes.shape({}),
+  user: PropTypes.object,
   socket: PropTypes.shape({
     emit: PropTypes.func.isRequired,
+    on: PropTypes.func.isRequired,
+    close: PropTypes.func.isRequired
   }),
+  setUser: PropTypes.func.isRequired
 };
 
 export default Login;

@@ -1,14 +1,22 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import styles from './RoomListItem.css'; 
+import styles from './RoomListItem.css';
+import PropTypes from 'prop-types';
 
 const RoomListItem = ({ room }) => {
+
   return (
-    <Link className={styles.link} to={`/room/${room.id}`}>
+    <Link
+      className={styles.link}
+      to={`/room/?id=${room.id}`}
+    >
       <li className={styles.container}>{room?.name}</li>
     </Link>
   );
 };
 
-export default RoomListItem;
+RoomListItem.propTypes = {
+  room: PropTypes.object
+};
 
+export default RoomListItem;

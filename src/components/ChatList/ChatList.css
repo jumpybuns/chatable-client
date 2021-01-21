@@ -1,0 +1,14 @@
+.container {
+  flex-grow: 1;
+  width: 100%;
+}
+.chatList {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  max-height: calc(100vh - 160px);
+  overflow: scroll;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+} 
