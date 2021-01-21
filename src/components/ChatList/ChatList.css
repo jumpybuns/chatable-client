@@ -1,0 +1,21 @@
+.chatList {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  height: 60vh;
+  width: 40vw;
+  overflow: scroll;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  background-color: white;
+}
+
+.container {
+  margin-top: 10vh;
+  width: 40vw;
+  /* border: solid 10px rgb(99, 96, 96);
+  border-radius: 14px; */
+}

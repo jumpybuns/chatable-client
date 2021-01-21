@@ -28,7 +28,7 @@ function Header({ user, handleLogout }) {
 
 Header.propTypes = {
   user: PropTypes.object,
-  handleLogout: PropTypes.func.isRequired
+  handleLogout: PropTypes.func
 };
 
 

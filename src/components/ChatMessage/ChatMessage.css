@@ -1,0 +1,29 @@
+.textRecieve {
+  max-width: 60%;
+  background: lightgrey;
+  border-radius: 15px;
+  padding: 8px;
+  color: #000;
+  align-self: flex-start;
+  margin: 3px;
+}
+.textSend {
+  max-width: 60%;
+  background: rgb(45, 74, 240);
+  border-radius: 15px;
+  padding: 8px;
+  align-self: flex-end;
+  margin: 3px;
+  color: white;
+}
+
+.message {
+  padding: 3px;
+  margin: 0;
+  font-size: .8rem;
+  line-height: 10px;
+  font-family: Arial, Helvetica, sans-serif;
+  word-wrap: break-word;
+  color: #000;
+  text-align: start;
+}
