@@ -19,6 +19,7 @@ export default function ChatForm({ user, socket, roomId }) {
       <input
         onChange={handleInputChange}
         className={styles.input}
+        required
         type="text"
         placeholder="Message"
         value={inputValue}
