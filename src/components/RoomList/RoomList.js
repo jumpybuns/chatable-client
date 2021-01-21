@@ -1,4 +1,4 @@
-  import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import RoomListItem from '../RoomListItem/RoomListItem';
 import styles from './RoomList.css';
 import PropTypes from 'prop-types';

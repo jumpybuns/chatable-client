@@ -1,7 +1,6 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import styles from './Home.css';
-import Header from '../Header/Header';
 import PropTypes from 'prop-types';
 // import image from '../../images/logo.png';
 
@@ -12,7 +11,6 @@ function Home({ user }) {
 
   return (
     <>
-      <Header user={user} />
       <section className={styles.container}>
         <h1 className={styles.heading}>Chatable</h1>
         <button 

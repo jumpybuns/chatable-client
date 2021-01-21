@@ -8,7 +8,7 @@ const RoomListItem = ({ room }) => {
   return (
     <Link
       className={styles.link}
-      to={`/room/${room.id}`}
+      to={`/room/?id=${room.id}`}
     >
       <li className={styles.container}>{room?.name}</li>
     </Link>

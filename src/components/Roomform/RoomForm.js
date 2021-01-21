@@ -28,20 +28,18 @@ function RoomForm({ user, socket }) {
 
   return (
     <form className={styles.container} onSubmit={handleSubmit(handleRoomForm)}>
-      <h1 className={styles.heading}>Create Room</h1>
       <input hidden ref={register} name="userId" />
-      <input
-        name="name"
-        className={styles.formInput}
-        placeholder="Name"
-        ref={register}
-      />
-      <p className={styles.errorsMessage}>
-        {showErrorOrEmptyString(showNameError, errors.name?.message)}
-      </p>
-      <button type="submit" className={styles.submitButton}>
-        Create
-      </button>
+      <div className={styles.inputWrapper}>
+        <input
+          name="name"
+          className={styles.formInput}
+          placeholder="Create A Room"
+          ref={register}
+        />
+        <button type="submit" className={styles.submitButton}>
+          Create
+        </button>
+      </div>
     </form>
   );
 }

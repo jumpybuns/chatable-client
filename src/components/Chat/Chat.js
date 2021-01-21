@@ -1,21 +1,25 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router';
-import Header from '../Header/Header';
+import { useLocation } from 'react-router-dom';
 import ChatList from '../ChatList/ChatList';
 import styles from './Chat.css';
 
-//socket.inRoom.id
-
 export default function Chat({ socket, user }) {
   const [messages, setMessages] = useState([]);
-  const { id } = useParams();
 
-  console.log(messages, 'messages');
+  const location = useLocation();
+  function useQuery() {
+    const query = new URLSearchParams(location.search);
+    return query.get('id');
+  }
+
+  const id = useQuery();
 
   useEffect(() => {
+    socket.emit('JOIN_ROOM', { id, user });
+  }, [id]);
+  
+  useEffect(() => {
     if(socket) {
-      socket.emit('JOIN_ROOM', { id, user });
-
       socket.on('JOIN_RESULTS', (payload) => {
         setMessages(payload.messages);
       });
@@ -28,12 +32,17 @@ export default function Chat({ socket, user }) {
         console.log(payload);
         setMessages(messages => [...messages, payload]);
       });
+
+      return () => {
+        socket.off('JOIN_RESULTS');
+        socket.off('BROADCAST_JOIN');
+        socket.off('MESSAGE_RESULTS');
+      };
     }
   }, []);
 
   return (
     <>
-      <Header user={user} />
       <section className={styles.container}>
         <ChatList
           roomId={id}

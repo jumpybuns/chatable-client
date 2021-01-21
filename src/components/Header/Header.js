@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 
 function Header({ user, handleLogout }) {
   return (
-    <div className={styles.container}>
+    <header className={styles.container}>
       <img className={styles.logo} src={image} alt="chatable logo" />
       {user.email ? (
         <div className={styles.userProfile}>
@@ -22,7 +22,7 @@ function Header({ user, handleLogout }) {
       ) : (
         <div></div>
       )}
-    </div>
+    </header>
   );
 }
 

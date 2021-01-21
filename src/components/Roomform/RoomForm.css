@@ -1,10 +1,17 @@
 .container {
   display: flex;
-  flex-direction: column;
+  box-sizing: border-box;
   align-items: center;
-  justify-content: center;
-  width: 30vw;
-  height: 70vh;
+  justify-content: flex-start;
+  width: 100%;
+  height: 50px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.inputWrapper {
+  min-width: 100%;
+  display: flex;
 }
 
 .formInput {
@@ -14,9 +21,10 @@
   padding-left: 5px;
   padding-bottom: 5px;
   outline: none;
-  width: 30vw;
+  width: 75%;
   border-width: 0;
-  margin: 0;
+  margin: 5px;
+  margin-right: 10px;
 }
 
 .heading {
@@ -31,11 +39,13 @@
   color: #fff !important;
   text-transform: uppercase;
   text-decoration: none;
+  font-size: 0.6em;
   background: #2979ff;
-  padding: 15px;
-  width: 30vw;
+  margin: 5px;
+  margin-left: 0;
+  padding: 5px;
+  width: 20%;
   border-radius: 5px;
-  display: inline-block;
   border: none;
   cursor: pointer;
   outline: none;
