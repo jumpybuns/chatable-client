@@ -9,7 +9,7 @@
 }
 .textSend {
   max-width: 60%;
-  background: rgb(45, 74, 240);
+  background:  #2979FF;
   border-radius: 15px;
   padding: 8px;
   align-self: flex-end;
@@ -24,6 +24,5 @@
   line-height: 10px;
   font-family: Arial, Helvetica, sans-serif;
   word-wrap: break-word;
-  color: #000;
   text-align: start;
 }
