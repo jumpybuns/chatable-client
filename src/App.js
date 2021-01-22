@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { io } from 'socket.io-client';
 import RoomContainer from './components/RoomContainer/RoomContainer';
 import Home from './components/Home/Home';
-import Chat from './components/Chat/Chat';
 import Signup from './components/Signup/Signup';
 import Login from './components/Login/Login';
 import styles from './App.css';
