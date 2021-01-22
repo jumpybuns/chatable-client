@@ -7,7 +7,7 @@
   align-self: flex-start;
   margin: 3px;
   box-shadow: 1px 7px 18px #ababab;
-  margin-left: 50px;
+  margin-left: 100px;
 }
 .textSend {
   max-width: 50%;
@@ -18,7 +18,7 @@
   margin: 3px;
   color: white;
   box-shadow: 1px 7px 18px #ababab;
-  margin-right: 50px;
+  margin-right: 100px;
 }
 
 .message {
@@ -37,7 +37,7 @@
   font-family: Arial, Helvetica, sans-serif;
   display: flex;
   align-self: flex-end;
-  margin-right: 50px;
+  margin-right: 100px;
 }
 
 .guestName {
@@ -46,5 +46,5 @@
   font-family: Arial, Helvetica, sans-serif;
   display: flex;
   align-self: flex-start;
-  margin-left: 50px
+  margin-left: 100px
 }
