@@ -1,0 +1,70 @@
+.textRecieve {
+  max-width: 35%;
+  background: lightgrey;
+  border-radius: 15px;
+  padding: 25px;
+  color: #000;
+  align-self: flex-start;
+  margin: 3px;
+  box-shadow: 1px 7px 18px #ababab;
+  margin-left: 100px;
+}
+
+.textSend {
+  max-width: 35%;
+  background: #2979ff;
+  border-radius: 15px;
+  padding: 25px;
+  align-self: flex-end;
+  margin: 3px;
+  color: white;
+  box-shadow: 1px 7px 18px #ababab;
+  margin-right: 100px;
+}
+
+.message {
+  padding: 3px;
+  margin: 0;
+  font-size: 1rem;
+  line-height: 10px;
+  font-family: Arial, Helvetica, sans-serif;
+  word-wrap: break-word;
+  text-align: start;
+  line-height: normal;
+}
+
+.userName {
+  color: lightgray;
+  font-size: 1rem;
+  font-family: Arial, Helvetica, sans-serif;
+  display: flex;
+  align-self: flex-end;
+  margin-right: 100px;
+}
+
+.guestName {
+  color: lightgray;
+  font-size: 1rem;
+  font-family: Arial, Helvetica, sans-serif;
+  display: flex;
+  align-self: flex-start;
+  margin-left: 100px;
+}
+
+.messageSentName {
+  color: lightgray;
+  font-size: 0.8rem;
+  font-family: Arial, Helvetica, sans-serif;
+  display: flex;
+  align-self: flex-end;
+  margin-right: 20px;
+}
+
+.messageRecievedName {
+  color: lightgray;
+  font-size: 0.8rem;
+  font-family: Arial, Helvetica, sans-serif;
+  display: flex;
+  align-self: flex-start;
+  margin-left: 20px;
+}

@@ -1,37 +1,60 @@
-import React, { useState, useEffect } from 'react';
-import queryString from 'query-string';
-import io from 'socket.io-client';
-import PropTypes from 'prop-types';
+import React, { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
+import ChatList from "../ChatList/ChatList";
+import styles from "./Chat.css";
+import ChatForm from "../ChatForm/ChatForm";
+import PropTypes from "prop-types";
 
-import styles from './Chat.css';
+function Chat({ socket, user }) {
+  const [messages, setMessages] = useState([]);
 
-let socket;
+  const location = useLocation();
+  function useQuery() {
+    const query = new URLSearchParams(location.search);
+    return query.get("id");
+  }
 
-function Chat({ location }) {
-  const [name, setName] = useState('');
-  const [room, setRoom] = useState('');
-  const ENDPOINT = 'localhost:5000';
+  const id = useQuery();
 
   useEffect(() => {
-    const { name, room } = queryString.parse(location.search);
+    if (socket) {
+      socket.emit("JOIN_ROOM", { id, user });
+    }
+  }, [id]);
 
-    socket = io(ENDPOINT);
+  useEffect(() => {
+    if (socket) {
+      socket.on("JOIN_RESULTS", (payload) => {
+        setMessages(payload.messages);
+      });
 
-    setName(name);
-    setRoom(room);
+      socket.on("BROADCAST_JOIN", (payload) => {
+        console.log(payload, "everyones message");
+      });
 
-    socket.emit('join', { name, room });    
-  }, [ENDPOINT, location.search]);
+      socket.on("MESSAGE_RESULTS", (payload) => {
+        console.log(payload);
+        setMessages((messages) => [...messages, payload]);
+      });
+
+      return () => {
+        socket.off("JOIN_RESULTS");
+        socket.off("BROADCAST_JOIN");
+        socket.off("MESSAGE_RESULTS");
+      };
+    }
+  }, []);
 
   return (
-    <h1>
-      Chat
-    </h1>
+    <section className={styles.container}>
+      <ChatList roomId={id} user={user} messages={messages} socket={socket} />
+      <ChatForm roomId={id} user={user} messages={messages} socket={socket} />
+    </section>
   );
 }
 
-Chat.propTypes = { 
-  location: PropTypes.object.isRequired
+Chat.propTypes = {
+  location: PropTypes.object.isRequired,
 };
 
 export default Chat;

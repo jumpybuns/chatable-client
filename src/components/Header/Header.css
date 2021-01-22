@@ -1,0 +1,46 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 2px solid white;
+  background-color: #1a1a1d;
+  height: 80px;
+  box-sizing: border-box;
+}
+
+.logo {
+  height: 60px;
+  margin-bottom: 5px;
+  margin-left: 50px;
+  margin-top: 10px;
+}
+
+.heading {
+  color: white;
+  font-size: 2.5em;
+}
+
+.userProfile {
+  display: flex;
+  align-items: center;
+  margin-right: 30px;
+  color: white;
+}
+
+.logoutButton {
+  color: #fff;
+  text-transform: uppercase;
+  text-decoration: none;
+  background: #2979ff;
+  padding: 10px;
+  border-radius: 5px;
+  display: inline-block;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  margin: 5px;
+  margin-left: 2vw;
+}
+
+.logoutButton:active {
+  opacity: 0.5;
+}
