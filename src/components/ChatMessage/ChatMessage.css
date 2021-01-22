@@ -48,6 +48,7 @@
   display: flex;
   align-self: flex-start;
   margin-left: 100px
+}
 
 .messageSentName {
   color: lightgray;
